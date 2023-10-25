@@ -3,17 +3,14 @@ package com.example.olegkochurov.always.yes.library_authors.controller;
 
 import com.example.olegkochurov.always.yes.library_authors.Entity.Author;
 import com.example.olegkochurov.always.yes.library_authors.service.AuthorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
 public class MyRESTController {
 
     private final AuthorService authorService;
-    //private final BookService bookService;
+
 
     public MyRESTController(AuthorService authorService) {
         this.authorService = authorService;
@@ -26,6 +23,15 @@ public class MyRESTController {
         return author;
 
     }
+
+    @PostMapping("/author")                        // добавляем автора
+    public Author addNewAuthor(@RequestBody Author author) {
+        authorService.saveNewAuthor(author);
+        return author;
+
+    }
+
+
 //
 //    @GetMapping("/books/{id}")      // возвращаем книгу  по  id
 //    public Book getBook(@PathVariable int id) {
@@ -48,12 +54,7 @@ public class MyRESTController {
 //
 //    }
 //
-//    @PostMapping("/author")                        // добавляем автора
-//    public Author addNewAuthor(@RequestBody Author author) {
-//        authorService.saveNewAuthor(author);
-//        return author;
-//
-//    }
+
 
 
 }
