@@ -3,8 +3,8 @@ package com.example.olegkochurov.always.yes.library_authors.dao;
 import com.example.olegkochurov.always.yes.library_authors.Entity.Author;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 
 @Repository

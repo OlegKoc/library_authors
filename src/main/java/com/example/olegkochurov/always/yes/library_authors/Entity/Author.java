@@ -1,25 +1,32 @@
 package com.example.olegkochurov.always.yes.library_authors.Entity;
 
+import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name="catalog")
 public class Author {
     @Id
+    @Column
     private int id;
+    @Column
     private String name;
-    private String surName;
-    private int numberPassport;
+    @Column
+    private String surname;
+    @Column
+    private int numberpassport;
+    @Column
     private String citizenship;
 
 
-    public Author(int id, String name, String surName, int numberPassport, String citizenship) {
+    public Author(int id, String name, String surname, int numberpassport, String citizenship) {
         this.id = id;
         this.name = name;
-        this.surName = surName;
-        this.numberPassport = numberPassport;
+        this.surname = surname;
+        this.numberpassport =numberpassport;
         this.citizenship = citizenship;
     }
 
@@ -35,20 +42,20 @@ public class Author {
         this.name = name;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public int getNumberPassport() {
-        return numberPassport;
+    public int getNumberpassport() {
+        return numberpassport;
     }
 
-    public void setNumberPassport(int numberPassport) {
-        this.numberPassport = numberPassport;
+    public void setNumberpassport(int numberpassport) {
+        this.numberpassport = numberpassport;
     }
 
     public String getCitizenship() {
@@ -63,8 +70,8 @@ public class Author {
     public String toString() {
         return "Author{" +
                 "name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", numberPassport=" + numberPassport +
+                ", surName='" + surname + '\'' +
+                ", numberPassport=" + numberpassport +
                 ", citizenship='" + citizenship + '\'' +
                 '}';
     }
