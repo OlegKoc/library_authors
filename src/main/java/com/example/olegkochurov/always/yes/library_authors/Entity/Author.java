@@ -1,15 +1,12 @@
 package com.example.olegkochurov.always.yes.library_authors.Entity;
 
-import jakarta.persistence.Column;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="catalog")
 public class Author {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
     @Column
