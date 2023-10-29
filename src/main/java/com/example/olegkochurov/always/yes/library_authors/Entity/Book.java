@@ -5,12 +5,18 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "library")
 public class Book {
-    private String heading;
-    private String genre;
-    private int rating;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
+    private String heading;
+    @Column
+    private String genre;
+    @Column
+    private int rating;
+
+
 
     public Book(String heading, String genre, int rating) {
         this.heading = heading;
@@ -20,6 +26,14 @@ public class Book {
 
     public Book() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getHeading() {
@@ -49,18 +63,10 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "heading='" + heading + '\'' +
+                "id=" + id +
+                ", heading='" + heading + '\'' +
                 ", genre='" + genre + '\'' +
                 ", rating=" + rating +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Id
-    public int getId() {
-        return id;
     }
 }

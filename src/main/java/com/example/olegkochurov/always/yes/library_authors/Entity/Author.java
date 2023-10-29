@@ -2,12 +2,17 @@ package com.example.olegkochurov.always.yes.library_authors.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Table(name="catalog")
+@Table(name = "catalog")
 public class Author {
     @Id
+    //@GeneratedValue(generator = "UUID")
+    //@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "id")      //(name="id",updatable = false, nullable = false)
     private int id;
     @Column
     private String name;
@@ -17,18 +22,35 @@ public class Author {
     private int numberpassport;
     @Column
     private String citizenship;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="catalog_id")
+    private List<Book> bok;
 
 
     public Author(int id, String name, String surname, int numberpassport, String citizenship) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.numberpassport =numberpassport;
+        this.numberpassport = numberpassport;
         this.citizenship = citizenship;
+    }
+    public void addBookToAuthor(Book book) {
+        if (bok == null) {
+            bok = new ArrayList<>();
+        }
+        bok.add(book);
     }
 
     public Author() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -63,23 +85,24 @@ public class Author {
         this.citizenship = citizenship;
     }
 
+    public List<Book> getBok() {
+        return bok;
+    }
+
+    public void setBok(List<Book> bok) {
+        this.bok = bok;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
-                "name='" + name + '\'' +
-                ", surName='" + surname + '\'' +
-                ", numberPassport=" + numberpassport +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", numberpassport=" + numberpassport +
                 ", citizenship='" + citizenship + '\'' +
                 '}';
     }
 
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Id
-    public int getId() {
-        return id;
-    }
 }

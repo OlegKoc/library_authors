@@ -41,7 +41,7 @@ public class MyRESTController {
     }
 
 
-    @GetMapping("/books/{id}")      // возвращаем книгу  по  id
+    @GetMapping("/books/{id}")                                     // возвращаем книгу  по  id
     public Book getBook(@PathVariable int id) {
         Book book = authorService.getBook(id);
         return book;
@@ -49,13 +49,13 @@ public class MyRESTController {
     }
 
     @GetMapping("/books")
-    public List<Book> showAllBook() {       // метод возвращает все книги
+    public List<Book> showAllBook() {                                 // метод возвращает все книги
         List<Book> allBook = authorService.getAllBook();
         return allBook;
     }
 
 
-    @PostMapping("/books")                        // добавляем книги
+    @PostMapping("/books")                                          // добавляем книги
     public Book addNewBooks(@RequestBody Book book) {
         authorService.addNewBook(book);
         return book;

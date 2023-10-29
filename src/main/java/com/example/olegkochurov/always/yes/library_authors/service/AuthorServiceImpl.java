@@ -22,7 +22,7 @@ public class AuthorServiceImpl implements AuthorService {
 
 
 
-    @Override                              // возвращаем книгу по id
+    @Override                                       // возвращаем книгу по id
     public Book getBook(int id) {
         Book book = null;
         Optional<Book> optional = catalogRepos.findById(id);
@@ -37,7 +37,7 @@ public class AuthorServiceImpl implements AuthorService {
         catalogRepos.save(book);
     }
 
-    @Override                              // возвращаем всех авторов
+    @Override                                       // возвращаем всех авторов
     public List<Author> getAllAuthors() {
         return catalogRepository.findAll();
     }
@@ -46,17 +46,13 @@ public class AuthorServiceImpl implements AuthorService {
         return catalogRepos.findAll();
     }
 
-
-
-    @Override                              // добавляем автора
+    @Override                                      // добавляем автора
     public void saveNewAuthor(Author author) {
         catalogRepository.save(author);
-
     }
 
-
     @Override
-                                          // возвращаем автора по id
+                                                   // возвращаем автора по id
     public Author getAuthor(int id) {
         Author author = null;
         Optional<Author> optional = catalogRepository.findById(id);
@@ -64,6 +60,5 @@ public class AuthorServiceImpl implements AuthorService {
             author = optional.get();
         }
         return author;
-
     }
 }
